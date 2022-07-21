@@ -5,7 +5,7 @@ const Persons = (props) => {
 
     return (
         <div>
-            {persons.filter((person) => person.name.includes(filter)).map((person) => <div>{person.name} {person.number}</div>)}
+            {persons.filter((person) => person.name.includes(filter)).map((person) => <div key={person.id} >{person.name} {person.number}</div>)}
         </div>
     )
 }
