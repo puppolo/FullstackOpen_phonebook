@@ -4,7 +4,7 @@ const Filter = (props) => {
     
     return (
         <div>
-            filter shown with <input onChange={e => setFilter(e.target.value)} />
+            Filter shown with <input onChange={e => setFilter(e.target.value)} />
         </div>
     )
 }

@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react'
+import './App.css'
+
 import service from './services/service'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
@@ -9,6 +11,8 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNum, setNewNum] = useState('')
   const [filter, setFilter] = useState('')
+  const [showAdd, setShowAdd] = useState(false)
+  const [showErr, setShowErr] = useState(false)
 
   function hook() {
     /*
@@ -41,7 +45,10 @@ const App = () => {
         //update the page
         setPersons(copy)
         //actually update the server
-        service.update(updatePerson.id, persons.find(person => person['name'] === newName)).then(console.log('update fulfilled'))
+        service.update(updatePerson.id, persons.find(person => person['name'] === newName)).then(console.log('update fulfilled')).catch(error => {
+          console.log(error)
+          setShowErr(true)
+        })
       }
     } else {
       //basic add new item
@@ -53,6 +60,8 @@ const App = () => {
       setPersons(copy)
         //actually adding this person to the server
       service.create({name: newName, number: newNum, id: newId}).then(console.log('create promise fulfilled'))
+      //showing added message at the top of the page
+      setShowAdd(true)
     }
 
     event.preventDefault()
@@ -74,6 +83,8 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      {showAdd && <h2 className="notificationAdd" >Added {newName}</h2>}
+      {showErr && <h2 className="notificationErr" >Information of {newName} has already been removed from the server</h2>}
       <Filter setFilter={setFilter} />
       <h3>Add a new</h3>
       <PersonForm setNewName={setNewName} setNewNum={setNewNum} handledSubmit={handledSubmit} />

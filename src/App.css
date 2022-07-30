@@ -1,0 +1,17 @@
+.notificationAdd {
+    color:green;
+    background-color: lightgrey;
+    border: 5px solid green;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.notificationErr {
+    color:red;
+    background-color: lightgrey;
+    border: 5px solid red;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+}

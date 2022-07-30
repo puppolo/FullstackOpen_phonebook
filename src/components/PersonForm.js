@@ -8,10 +8,10 @@ const PersonForm = (props) => {
         <div>
             <form onSubmit={(e) => handledSubmit(e)}>
                 <div>
-                    name: <input onChange={e => setNewName(e.target.value)} />
+                    Name: <input onChange={e => setNewName(e.target.value)} />
                 </div>
                 <div>
-                    number: <input onChange={e => setNewNum(e.target.value)} />
+                    Number: <input onChange={e => setNewNum(e.target.value)} />
                 </div>
                 <div>
                     <button type="submit">add</button>
